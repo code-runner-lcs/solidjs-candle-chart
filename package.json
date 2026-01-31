@@ -1,21 +1,37 @@
 {
-  "name": "vite-template-solid",
-  "version": "0.0.0",
-  "description": "",
+  "name": "solidjs-ohlc-chart",
+  "version": "0.1.0",
+  "description": "OHLC candlestick chart component for SolidJS",
   "type": "module",
+  "main": "./dist/solidjs-ohlc-chart.js",
+  "module": "./dist/solidjs-ohlc-chart.js",
+  "types": "./dist/solidjs-ohlc-chart.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/solidjs-ohlc-chart.d.ts",
+      "import": "./dist/solidjs-ohlc-chart.js",
+      "default": "./dist/solidjs-ohlc-chart.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
+    "build:lib": "vite build --config vite.lib.config.ts",
     "serve": "vite preview"
   },
   "license": "MIT",
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.13",
+    "@types/node": "^25.1.0",
     "solid-devtools": "^0.34.3",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2",
     "vite": "^7.1.4",
+    "vite-plugin-dts": "^4.3.0",
     "vite-plugin-solid": "^2.11.8"
   },
   "dependencies": {
