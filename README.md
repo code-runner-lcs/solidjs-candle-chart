@@ -1,36 +1,75 @@
-## Usage
+# solidjs-ohlc-chart
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+OHLC candlestick chart component for [SolidJS](https://www.solidjs.com/). Zoom, pan, crosshair and theme support.
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+## Installation
 
 ```bash
-$ npm install # or pnpm install or yarn install
+npm install solidjs-ohlc-chart solid-js
+# or pnpm add solidjs-ohlc-chart solid-js
+# or yarn add solidjs-ohlc-chart solid-js
 ```
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+## Usage
 
-## Available Scripts
+```tsx
+import { OHLCChart } from 'solidjs-ohlc-chart';
+import type { OHLCData } from 'solidjs-ohlc-chart';
 
-In the project directory, you can run:
+const data: OHLCData[] = [
+  { time: 1700000000000, open: 100, high: 105, low: 98, close: 103 },
+  { time: 1700003600000, open: 103, high: 108, low: 102, close: 106 },
+  // ...
+];
 
-### `npm run dev` or `npm start`
+function App() {
+  return (
+    <OHLCChart
+      data={data}
+      width={800}
+      height={400}
+    />
+  );
+}
+```
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Props
 
-The page will reload if you make edits.<br>
+| Prop | Type | Description |
+|------|------|-------------|
+| `data` | `OHLCData[]` | Array of OHLC candles (required). `time` in ms, `open`/`high`/`low`/`close` as numbers. |
+| `width` | `number` | Chart width in pixels (default: 800). |
+| `height` | `number` | Chart height in pixels (default: 400). |
+| `timeRange` | `[number, number]` | Initial time range (optional). |
+| `priceRange` | `[number, number]` | Initial price range (optional). |
+| `timeframe` | `number` | Candle timeframe in minutes (optional, for labels). |
+| `theme` | `Partial<ChartTheme>` | Override theme colors (optional). |
+| `skipValidation` | `boolean` | Skip data validation when source is trusted (optional). |
+| `onViewportChange` | `(viewport: Viewport) => void` | Callback when viewport changes (optional). |
 
-### `npm run build`
+## Exports
 
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
+- **Components:** `OHLCChart`, `TimeframeSelector`
+- **Types:** `OHLCData`, `Viewport`, `ChartTheme`, `OHLCChartProps`, etc.
+- **Utils:** `createScale`, `fitToData`, `validateViewport`, `validateOHLCData`, `sortOHLCDataByTime`, `TIMEFRAMES`
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Demo / development
 
-## Deployment
+```bash
+npm install
+npm run dev
+```
 
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+Open [http://localhost:3000](http://localhost:3000) to run the demo app.
 
-## This project was created with the [Solid CLI](https://github.com/solidjs-community/solid-cli)
+## Build the library
+
+```bash
+npm run build:lib
+```
+
+Output is in `dist/` (ESM + `.d.ts`).
+
+## License
+
+MIT
