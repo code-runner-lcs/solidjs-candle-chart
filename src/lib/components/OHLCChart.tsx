@@ -9,8 +9,8 @@ import { MainCanvas } from './canvas/MainCanvas';
 import { PriceAxisCanvas } from './canvas/PriceAxisCanvas';
 import { TimeAxisCanvas } from './canvas/TimeAxisCanvas';
 import { SettingsButton } from './settings/SettingsButton';
-import { CrosshairCanvas } from './chart-compponents/CrosshairCanvas';
-import { CandleInfoBox } from './chart-compponents/CandleInfoBox';
+import { CrosshairCanvas } from './chart-components/CrosshairCanvas';
+import { CandleInfoBox } from './chart-components/CandleInfoBox';
 
 const PRICE_AXIS_WIDTH = 70;
 const TIME_AXIS_HEIGHT = 30;
